@@ -26,6 +26,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " Basic settings
+set cursorline
 set smartindent
 set softtabstop=4
 set tabstop=4
