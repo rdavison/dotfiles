@@ -11,6 +11,10 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tomasr/molokai'
 Plugin 'endel/vim-github-colorscheme'
 Plugin 'scrooloose/nerdtree'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'morhetz/gruvbox'
+Plugin 'jamessan/vim-gnupg'
 Plugin 'scrooloose/syntastic'
 Plugin 'majutsushi/tagbar'
 Plugin 'Valloric/YouCompleteMe'
@@ -20,10 +24,13 @@ Plugin 'petRUShka/vim-opencl'
 Plugin 'Yggdroot/indentLine'
 Plugin 'lucy/term.vim'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'MartinLafreniere/vim-PairTools.git'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
 
 " Vundle footer
-call vundle#end()            " required
-filetype plugin indent on    " required
+call vundle#end()
+filetype plugin indent on
 
 " Basic settings
 set cursorline
@@ -40,9 +47,18 @@ set nowrap
 set mouse=ncr
 set virtualedit=all
 set t_Co=256
+set background=dark
+set termguicolors
+set backspace=2
 
-" This colorscheme comes from vim-github-colorscheme
-colorscheme 0x7A69_dark
+" The best colorscheme ever
+color gruvbox
+let g:gruvbox_contrast_dark = 'hard'
+
+" Set the leader keys to comma
+let mapleader=","
+let maplocalleader=","
+
 
 " Allows me to type jj instead always having to reach up to the ESC button
 imap jj <Esc>
@@ -76,8 +92,22 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_ocaml_checkers = ['merlin']
 
-" Since syntastic is slow, force it into passive mode. Press <F6> to toggle
-let g:syntastic_mode_map = { "mode": "passive",
-                           \ "active_filetypes": [],
-                           \ "passive_filetypes": [] }
+" " Since syntastic is slow, force it into passive mode. Press <F6> to toggle
+" let g:syntastic_mode_map = { "mode": "passive",
+"                            \ "active_filetypes": [],
+"                            \ "passive_filetypes": [] }
+
+" Override indentation settings for OCaml, Javascript, HTML, Reason
+autocmd BufRead,BufNewFile *.mli,*.ml,*.js,*.html,*.re,*.rei setl ts=2 sw=2 sts=2
+
+" Settings for OCaml development
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+execute "set rtp^=" . g:opamshare . "/ocp-indent/vim"
+
+" Settings for Makefile
+autocmd FileType make set noexpandtab
+
+syntax on
