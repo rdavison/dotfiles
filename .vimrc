@@ -50,6 +50,7 @@ set t_Co=256
 set background=dark
 set termguicolors
 set backspace=2
+set colorcolumn=80
 
 " The best colorscheme ever
 color gruvbox
@@ -79,6 +80,7 @@ map <C-L> <C-W>l
 " Settings for indentLine
 let g:indentLine_char = '│'
 let g:indentLine_color_term = 235
+let g:indentLine_enabled = 0
 
 " Setting for python so the # will not automatically jump to the start of the line
 autocmd BufRead *.py inoremap # X<c-h>#<space>
