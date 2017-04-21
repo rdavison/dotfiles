@@ -79,6 +79,9 @@ map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-H> <C-W>h
 map <C-L> <C-W>l
+" Swap z<CR> and z.
+nnoremap z<CR> z.
+nnoremap z. z<CR>
 
 " Settings for indentLine
 let g:indentLine_char = '│'
