@@ -79,9 +79,13 @@ map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-H> <C-W>h
 map <C-L> <C-W>l
+map <C-T> zs
 " Swap z<CR> and z.
 nnoremap z<CR> z.
 nnoremap z. z<CR>
+" Easier left and right scrolling
+nnoremap <C-N> zl
+nnoremap <C-P> zh
 
 " Settings for indentLine
 let g:indentLine_char = '│'
