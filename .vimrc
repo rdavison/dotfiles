@@ -19,6 +19,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'lucy/term.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'jamessan/vim-gnupg'
 Plugin 'endel/vim-github-colorscheme'
@@ -51,6 +52,8 @@ set background=dark
 set termguicolors
 set backspace=2
 set colorcolumn=80
+set hidden
+set ruler
 
 " The best colorscheme ever
 color gruvbox
