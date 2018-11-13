@@ -46,3 +46,5 @@ alias eakm=make
 test -r /Users/rdavison/.opam/opam-init/init.sh && . /Users/rdavison/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 eval $(opam env)
 #alias utop='utop-full -safe-string -short-paths'
+
+source .secret
