@@ -1,4 +1,10 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Python runtime for vim                                                       "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:python2_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim plug                                                                     "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.local/share/nvim/plugged')
@@ -8,29 +14,43 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Plug 'rafi/awesome-vim-colorschemes'
 " Plug 'rdavison/kimbie-vim'
 " Plug 'reasonml-editor/vim-reason-plus'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'airblade/vim-gitgutter'
-Plug 'effkay/argonaut.vim'
+
+" Plug 'NLKNguyen/papercolor-theme'
+" Plug 'airblade/vim-gitgutter'
+" Plug 'effkay/argonaut.vim'
 Plug 'godlygeek/tabular'
-Plug 'hashivim/vim-terraform'
-Plug 'majutsushi/tagbar'
-Plug 'neomake/neomake'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'rdavison/LanguageClient-neovim', {'do': ':UpdateRemotePlugins'}
-Plug 'rdavison/nova.vim'
+" Plug 'hashivim/vim-terraform'
+" Plug 'majutsushi/tagbar'
+" Plug 'neomake/neomake'
+" Plug 'ntpeters/vim-better-whitespace'
+Plug 'autozimu/LanguageClient-neovim', {'do': ':UpdateRemotePlugins'}
+" Plug 'rdavison/nova.vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2'
 Plug 'rgrinberg/vim-ocaml'
-Plug 'roxma/nvim-completion-manager'
+" Plug 'roxma/nvim-completion-manager'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Python runtime for vim                                                       "
+" NCM2
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:python2_host_prog = '/usr/local/bin/python2'
-let g:python3_host_prog = '/usr/local/bin/python3'
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
+au User Ncm2Plugin call ncm2#register_source({
+  \ 'name': 'ocaml',
+  \ 'priority': 9,
+  \ 'subscope_enable': 1,
+  \ 'scope': ['ocaml'],
+  \ 'mark': 'ocaml',
+  \ 'word_pattern': '[\w\_]+',
+  \ 'complete_pattern': '\.',
+  \ 'on_complete': ['ncm2#on_complete#omni', 'merlin#Complete']
+  \ })
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Basic settings                                                               "
@@ -53,7 +73,7 @@ set backspace=2     " better backspace support than the default
 set colorcolumn=80  " draw a line at the 80 character mark
 set hidden          " keep a buffer even when it is abandoned
 set ruler           " show information about where the cursor is
-set completeopt=menuone,longest,preview " show the completion window
+"set completeopt=menuone,longest,preview " show the completion window
 syntax on           " read syntax files
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -75,8 +95,9 @@ let g:PaperColor_Theme_Options = {
   \   }
   \ }
 
-set background=light
-color nova
+set background=dark
+let ayucolor="dark"
+color ayu
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Keybindings                                                          "
@@ -112,6 +133,7 @@ let g:LanguageClient_serverCommands = {
   \ }
 
 " Keymap
+tnoremap <C-t> <C-\><C-n>
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
