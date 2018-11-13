@@ -9,7 +9,10 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'godlygeek/tabular'
-Plug 'autozimu/LanguageClient-neovim', {'do': ':UpdateRemotePlugins'}
+Plug 'autozimu/LanguageClient-neovim', {
+  \ 'branch': 'next',
+  \ 'do': 'bash install.sh',
+  \ }
 Plug 'ayu-theme/ayu-vim'
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2'
