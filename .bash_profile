@@ -47,4 +47,4 @@ test -r /Users/rdavison/.opam/opam-init/init.sh && . /Users/rdavison/.opam/opam-
 eval $(opam env)
 #alias utop='utop-full -safe-string -short-paths'
 
-source .secret
+source .bash_profile_secret
